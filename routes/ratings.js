@@ -24,7 +24,7 @@ router.post('/dashboard', function(req, res, next) {
           console.log("RATINGS DATA SUCCESS", Object.keys(data))
           //var latestClose = Object.values(data["Time Series (Daily)"])[0]["5. adjusted close"]
           req.flash("success", "Ratings Data Request Success!")
-          //res.render("ratings_dashboard", {symbol: symbol, data: JSON.stringify(data), latestClose: latestClose});
+          res.render("ratings_dashboard", {symbol: symbol, data: JSON.stringify(data), latestClose: latestClose});
         })
       .catch(function(err){
         console.log("RATINGS DATA ERROR:", err)

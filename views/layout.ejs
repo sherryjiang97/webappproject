@@ -11,23 +11,58 @@
 
     <meta charset="utf-8">
     
+  </head>
+
+  <body>
+    <!--
+      FLASH MESSAGES
+      https://github.com/escaladesports/express-flash-messages
+    -->
+    <div class="flash-container">
+      <% const messages = getMessages() %>
+
+      <% if (messages) { %>
+          <% Object.entries(messages).forEach((obj) => { %>
+              <% var category = obj[0] %>
+              <% var message = obj[1] %>
+
+              <!--
+                  BOOTSTRAP ALERTS
+                  https://getbootstrap.com/docs/5.0/components/alerts/#dismissing
+              -->
+              <div class="alert alert-<%= category %> alert-dismissible fade show" role="alert" style="margin-bottom:0;">
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  <%= message %>
+              </div>
+
+          <% }) %>
+      <% } %>
+    </div>
+
     <nav>
       <a href="/">Home</a>
       <a href="/ratings/form">Course Ratings</a>
       <a href="/submit/form">Submit a Review</a>
     </nav>
-  </head>
 
-  <body>
     <div id="content">
       <%- body %>
-  </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2021 Zhiye Jiang, Nicholas Deng, Marthaline Cooper, Ananya Kadir</p>
+    </footer>
+  
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    
+      console.log("Thanks for the page visit!")
+    
+    </script>
   </body>
 
-  <footer>
-    <p>&copy; 2021 Zhiye Jiang, Nicholas Deng, Marthaline Cooper, Ananya Kadir 
-  </p>
-  </footer>
+
 </html>
 
 
