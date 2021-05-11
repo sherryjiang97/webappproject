@@ -4,11 +4,11 @@ var router = express.Router();
 const {submitRatings} = require("../firebase-service")
 
 /* GET users listing. */
-router.get('/form', function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render("submit_form");
 });
 
-router.post('/dashboard', async function(req, res, next) {
+router.post('/success', async function(req, res, next) {
   console.log("FORM DATA", req.body)
 
   // Add a new document with a generated id.
@@ -21,14 +21,19 @@ router.post('/dashboard', async function(req, res, next) {
     "submitTime": date
   }
 
-  var submit = await submitRatings(rate);
+  try {
+    var submit = await submitRatings(rate);
+  } catch {
+    req.flash("danger", "OOPS, failed to fetch course.")
+    res.redirect("/")
+  }
 
-  console.log('Added document with ID: ', submit.id);
+
   res.render("submit_success")
 
 
   req.flash("warning", "Ratings sent successfully!")
-  res.redirect("/submit/form")
+  res.redirect("/submit")
 })
 
 module.exports = router;

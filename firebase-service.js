@@ -18,71 +18,41 @@ const app = firebase.initializeApp(firebaseConfig)
 
 const db = firebase.firestore(app)
 
-async function fetchProducts() {
-    console.log("FETCHING PRODUCTS...")
+async function fetchRatings(courseName) {
+    console.log("FETCHING RATINGS...")
 
-    // https://googleapis.dev/nodejs/firestore/latest/CollectionReference.html#get
-    const docs = await db.collection("products").get()
-    console.log("DOCS:", docs.size)
+    // https://firebase.google.com/docs/firestore/query-data/get-data#node.js_1
+    const coursesRef = db.collection('courses');
+    const snapshot = await coursesRef.where('course_name', '==', courseName).get();
+    if (snapshot.empty) {
+    console.log('No matching documents.');
+    return;
+    }  
 
-    // https://googleapis.dev/nodejs/firestore/latest/QuerySnapshot.html
-    // instead of returning the products as documents with separate ids and data
-    // let's create a single object with both the id and the data
-    // to make them easier to process and loop through later
-    var products = []
-    docs.forEach((doc) => {
-        //console.log("DOC ID:", doc.id, "DATA", doc.data())
-        var product = doc.data() // create a new object with the product info
-        product["id"] = doc.id // merge the id with the object
-        products.push(product)
-    })
-    //console.log("PRODUCTS:", products.length)
-    return products
+    var reviews = []
+
+    snapshot.forEach(doc => {
+        console.log(doc.id, '=>', doc.data());
+        var review = doc.data()
+        reviews["id"] = doc.id
+        reviews.push(review)
+    });
+    return reviews
 }
 
-// async function fetchRatings() {
-//     console.log("FETCHING RATINGS...")
-
-//     // https://googleapis.dev/nodejs/firestore/latest/CollectionReference.html#get
-//     const docs = await db.collection("courses").get()
-//     console.log("DOCS:", docs.size)
-
-//     // https://googleapis.dev/nodejs/firestore/latest/QuerySnapshot.html
-//     // instead of returning the products as documents with separate ids and data
-//     // let's create a single object with both the id and the data
-//     // to make them easier to process and loop through later
-//     var ratings = []
-//     docs.forEach((doc) => {
-//         //console.log("DOC ID:", doc.id, "DATA", doc.data())
-//         var product = doc.data() // create a new object with the product info
-//         product["id"] = doc.id // merge the id with the object
-//         ratings.push(product)
-//     })
-//     //console.log("PRODUCTS:", products.length)
-//     return ratings
-// }
-
 async function submitRatings(newRatings) {
-    //
-    // FYI: newOrder param should look like:
-    //
-    // {
-    //   "userEmail": "hello@example.com",
-    //   "productID": "klmnopq",
-    //   "quantity": 2,
-    //   "totalPrice": 6.99
-    // }
-    //
-    // newOrder["timestamp"] = parseInt(Date.now().toFixed())
-    console.log("NEW ORDER:", newRatings)
+    console.log("NEW RATING:", newRatings)
 
-    // see: https://googleapis.dev/nodejs/firestore/latest/CollectionReference.html
-    var courseRef = db.collection("courses")
+    // https://firebase.google.com/docs/firestore/manage-data/add-data
+    if (newRatings.empty) {
+        console.log('No ratings submitted.');
+        return;
+        }  
+    var courseRef = await db.collection("courses").add(newRatings)
 
-    // see: https://firebase.google.com/docs/database/admin/save-data
-    await courseRef.add(newRatings)
+    console.log('Added document with ID: ', courseRef.id);
 
     return newRatings
 }
 
-module.exports = {firebaseConfig, app, db, fetchProducts, submitRatings}
+module.exports = {firebaseConfig, app, db, fetchRatings, submitRatings}

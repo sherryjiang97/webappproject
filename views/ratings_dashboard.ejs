@@ -1,32 +1,23 @@
 <h1>Course Ratings</h1>
 
-<!--
-    BOOTSTRAP GRID
-    https://getbootstrap.com/docs/5.0/layout/grid/#row-columns
--->
-<div class="container">
-    <div class="row">
-    <% ratings_form.forEach(function(product){ %>
+Test Success
+
+<div>
+    <% reviews.forEach(function(review){ %>
         <div class="col">
             <!--
                 BOOTSTRAP CARD
                 https://getbootstrap.com/docs/5.0/components/card/
             -->
             <div class="card" style="margin-bottom: 2em;">
-                <img src="<%= product['imageUrl'] %>" class="card-img-top" alt="photo of <%= product['name'] %>">
                 <div class="card-body">
-                    <h5 class="card-title"><%= product["name"] %></h5>
-                    <p class="card-text"><%= product["description"] %></p>
+                    <h5 class="card-title">Course Name: <%= review["course_name"] %></h5>
+                    <p class="card-text">Course Difficulty: <%= review["difficulty"] %></p>
+                    <p class="card-text">Amount of Assessments: <%= review["assessments"] %></p>
+                    <p class="card-text">Amount of Group Work: <%= review["groupWork"] %></p>
 
-                    <form action="/products/orders" method="POST">
-                        <input type="hidden" name="productId" value="<%= product['id'] %>">
-                        <input type="hidden" name="productName" value="<%= product['name'] %>">
-                        <input type="hidden" name="productPrice" value="<%= product['price'] %>">
-                        <button class="btn btn-primary">Order Now!</button>
-                    </form>
                 </div>
             </div>
         </div>
     <% }) %>
-    </div>
 </div>
