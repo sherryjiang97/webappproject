@@ -40,4 +40,49 @@ async function fetchProducts() {
     return products
 }
 
-module.exports = {firebaseConfig, app, db, fetchProducts}
+// async function fetchRatings() {
+//     console.log("FETCHING RATINGS...")
+
+//     // https://googleapis.dev/nodejs/firestore/latest/CollectionReference.html#get
+//     const docs = await db.collection("courses").get()
+//     console.log("DOCS:", docs.size)
+
+//     // https://googleapis.dev/nodejs/firestore/latest/QuerySnapshot.html
+//     // instead of returning the products as documents with separate ids and data
+//     // let's create a single object with both the id and the data
+//     // to make them easier to process and loop through later
+//     var ratings = []
+//     docs.forEach((doc) => {
+//         //console.log("DOC ID:", doc.id, "DATA", doc.data())
+//         var product = doc.data() // create a new object with the product info
+//         product["id"] = doc.id // merge the id with the object
+//         ratings.push(product)
+//     })
+//     //console.log("PRODUCTS:", products.length)
+//     return ratings
+// }
+
+async function submitRatings(newRatings) {
+    //
+    // FYI: newOrder param should look like:
+    //
+    // {
+    //   "userEmail": "hello@example.com",
+    //   "productID": "klmnopq",
+    //   "quantity": 2,
+    //   "totalPrice": 6.99
+    // }
+    //
+    // newOrder["timestamp"] = parseInt(Date.now().toFixed())
+    console.log("NEW ORDER:", newRatings)
+
+    // see: https://googleapis.dev/nodejs/firestore/latest/CollectionReference.html
+    var courseRef = db.collection("courses")
+
+    // see: https://firebase.google.com/docs/database/admin/save-data
+    await courseRef.add(newRatings)
+
+    return newRatings
+}
+
+module.exports = {firebaseConfig, app, db, fetchProducts, submitRatings}

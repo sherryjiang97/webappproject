@@ -4,11 +4,13 @@ var express = require('express');
 var router = express.Router();
 
 const {fetchProducts} = require("../firebase-service")
+// const {fetchRatings} = require("../firebase-service")
 
 /* GET course rating. */
 router.get('/', async function(req, res, next) {
   try {
       var products = await fetchProducts()
+      // var products = await fetchRatings()
       res.render("ratings_form", {"ratings_form": products})
   } catch (error) {
       req.flash("danger", "OOPS, failed to fetch products.")

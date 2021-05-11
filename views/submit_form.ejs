@@ -2,7 +2,7 @@
 
 <p>Choose your class below:</p>
 
-<form action="/ratings/dashboard" method="POST">
+<form action="/submit/dashboard" method="POST">
 
     <label>Class:</label>
     <select name="course_name">
@@ -13,11 +13,33 @@
     </select>
     <br>
 
-    <label>Difficulty:</label>
+    <label>Amount of Summative Assessments (higher is more):</label>
+    <select name="assessments">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br>
+
+    <label>Amount of Group Work (higher is more):</label>
+    <select name="groupWork">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br>
+
+    <label>Difficulty of Class (higher is more difficult):</label>
     <select name="difficulty">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
     </select>
     <br>
 
