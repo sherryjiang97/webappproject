@@ -1,8 +1,11 @@
 <h1>Course Ratings</h1>
 
-Test Success
-
 <div>
+    <h2>Class Difficulty: <%= averages[0] %></h2>
+    <h2>Amount of Assessments: <%= averages[1] %></h2>
+    <h2>Amount of Group Work: <%= averages[2] %></h2>
+
+    <h3>Individual reviews are listed below:</h3>
     <% reviews.forEach(function(review){ %>
         <div class="col">
             <!--
@@ -15,6 +18,7 @@ Test Success
                     <p class="card-text">Course Difficulty: <%= review["difficulty"] %></p>
                     <p class="card-text">Amount of Assessments: <%= review["assessments"] %></p>
                     <p class="card-text">Amount of Group Work: <%= review["groupWork"] %></p>
+                    <p class="card-text">Comments: <%= review["comments"] %></p>
 
                 </div>
             </div>
