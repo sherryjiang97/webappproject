@@ -1,0 +1,43 @@
+body {
+  
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 50px;
+  padding-bottom: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #ff002b;
+}
+
+
+.topnavbar{
+  overflow: hidden;
+  position: fixed;
+  right: 0.3%;
+  left: 0.1%;
+  top: 0%;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+
+}
+
+.topnavbar a {
+  float: right;
+  display: block;
+  color: #000000;
+  text-align: center;
+  
+  padding: 10px 16px;
+  text-decoration: none; /*gets rid of underlines*/
+}
+
+
+.topnavbar a:hover {
+  
+  background-image: linear-gradient(to right, rgb(64, 64, 128), rgb(155, 120, 155), pink, yellow);
+}
+
+
+/*homepage background*/

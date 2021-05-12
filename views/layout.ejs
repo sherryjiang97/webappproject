@@ -5,16 +5,29 @@
       @font-face {font-family: karla;src: url(Karla-VariableFont_wght.ttf);}
       h1   {color:coral;}
       h3   {font-family: karla;}
-      body {background-color:lavender;border-style: groove;font-family: karla;}
+      body {background-color:rgb(255, 255, 255);border-style: groove;font-family: karla;}
       p    {color:black;font-family:karla;}
       </style>
 
     <meta charset="utf-8">
-    
+    <link href="/assets/style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
-    <!--
+   
+      <div class="topnavbar" >
+          <nav>
+            <img src="/images/logo.PNG" style="width: 15%; margin-top: 0.1%; float: left;" >
+            <a href="/ratings" style="margin-top: 0.3%;">Course Ratings</a>
+            <a href="/submit" style="margin-top: 0.3%;">Submit a Review</a>
+            <a href="/" style="margin-top: 0.3%;">Home</a>
+          </nav>
+      </div>  
+
+    <div id="content" style="background-size: cover; width: 100%;">
+      <%- body %>
+    </div>
+ <!--
       FLASH MESSAGES
       https://github.com/escaladesports/express-flash-messages
     -->
@@ -38,17 +51,7 @@
           <% }) %>
       <% } %>
     </div>
-
-    <nav>
-      <a href="/">Home</a>
-      <a href="/ratings">Course Ratings</a>
-      <a href="/submit">Submit a Review</a>
-    </nav>
-
-    <div id="content">
-      <%- body %>
-    </div>
-
+    
     <footer>
       <p>&copy; 2021 Zhiye Jiang, Nicholas Deng, Marthaline Cooper, Ananya Kadir</p>
     </footer>
