@@ -17,9 +17,9 @@ router.post('/dashboard', async function(req, res, next) {
 
   try {
     var reviews = await fetchRatings(course);
-  } catch {
-    req.flash("danger", "OOPS, failed to fetch course.")
-    res.redirect("/")
+  } catch (error) {
+    req.flash("danger", error)
+    res.redirect("/ratings")
   }
   var difficulty = []
   var assessments = []
