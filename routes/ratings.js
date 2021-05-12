@@ -24,29 +24,34 @@ router.post('/dashboard', async function(req, res, next) {
   var difficulty = []
   var assessments = []
   var groupWork = []
-  reviews.forEach(function(review) {
-    difficulty.push(review.difficulty)
-    assessments.push(review.assessments)
-    groupWork.push(review.groupWork)
-  })
+  if (reviews) {
+    reviews.forEach(function(review) {
+      difficulty.push(review.difficulty)
+      assessments.push(review.assessments)
+      groupWork.push(review.groupWork)
+    })
+  }
+  else {
+    res.render("ratings_empty")
+  }
+
 
   var difficultyTotal = 0;
-
+  var assessmentsTotal = 0;
   var groupWorkTotal = 0;
+
   for(var i = 0; i < difficulty.length; i++) {
       difficultyTotal += difficulty[i];
   }
-  var avgDifficulty = difficultyTotal / difficulty.length;
-
-  var assessmentsTotal = 0;
   for(var i = 0; i < assessments.length; i++) {
     assessmentsTotal += assessments[i];
   }
-  var avgAssessments = assessmentsTotal / assessments.length;
-
   for(var i = 0; i < groupWork.length; i++) {
     groupWorkTotal += groupWork[i];
   }
+
+  var avgDifficulty = difficultyTotal / difficulty.length;
+  var avgAssessments = assessmentsTotal / assessments.length;
   var avgGroupWork = groupWorkTotal / groupWork.length;
 
   var avgScores = [avgDifficulty, avgAssessments, avgGroupWork];
