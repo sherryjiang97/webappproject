@@ -19,7 +19,7 @@ router.post('/success', async function(req, res, next) {
     "difficulty": parseInt(req.body.difficulty),
     "groupWork": parseInt(req.body.groupWork),
     "comments": req.body.comments,
-    "submitTime": date
+    "submitTime": date.toUTCString()
   }
 
   try {
@@ -28,7 +28,7 @@ router.post('/success', async function(req, res, next) {
     req.flash("danger", "OOPS, failed to submit ratings.")
     res.redirect("/")
   }
-  
+
   res.render("submit_success")
 
   req.flash("warning", "Ratings sent successfully!")
