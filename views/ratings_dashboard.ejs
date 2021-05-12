@@ -1,9 +1,12 @@
-<h1>Course Ratings</h1>
+<h1><%= title %> Course Ratings</h1>
 
 <div>
+    <h2>------------------------------</h2>
+    <h2>Overall Course Averages</h2>
     <h2>Class Difficulty: <%= averages[0] %></h2>
     <h2>Amount of Assessments: <%= averages[1] %></h2>
     <h2>Amount of Group Work: <%= averages[2] %></h2>
+    <h2>------------------------------</h2>
 
     <h3>Individual reviews are listed below:</h3>
     <% reviews.forEach(function(review){ %>
@@ -15,11 +18,12 @@
             -->
             <div class="card" style="margin-bottom: 2em;">
                 <div class="card-body">
-                    <h5 class="card-title">Course Name: <%= review["course_name"] %></h5>
+                    <h5 class="card-title">Course Name: <%= title %></h5>
                     <p class="card-text">Course Difficulty: <%= review["difficulty"] %></p>
                     <p class="card-text">Amount of Assessments: <%= review["assessments"] %></p>
                     <p class="card-text">Amount of Group Work: <%= review["groupWork"] %></p>
                     <p class="card-text">Comments: <%= review["comments"] %></p>
+                    <p class="card-test">Submitted: <%= review["submitTime"] %></p>
 
                 </div>
             </div>

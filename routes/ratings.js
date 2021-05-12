@@ -14,7 +14,6 @@ router.post('/dashboard', async function(req, res, next) {
   var course = req.body.course_name
   console.log("COURSE REQUESTED:", course)
 
-
   try {
     var reviews = await fetchRatings(course);
   } catch (error) {
@@ -24,17 +23,11 @@ router.post('/dashboard', async function(req, res, next) {
   var difficulty = []
   var assessments = []
   var groupWork = []
-  if (reviews) {
-    reviews.forEach(function(review) {
-      difficulty.push(review.difficulty)
-      assessments.push(review.assessments)
-      groupWork.push(review.groupWork)
-    })
-  }
-  else {
-    res.render("ratings_empty")
-  }
-
+  reviews.forEach(function(review) {
+    difficulty.push(review.difficulty)
+    assessments.push(review.assessments)
+    groupWork.push(review.groupWork)
+  })
 
   var difficultyTotal = 0;
   var assessmentsTotal = 0;
@@ -56,7 +49,25 @@ router.post('/dashboard', async function(req, res, next) {
 
   var avgScores = [avgDifficulty, avgAssessments, avgGroupWork];
 
-  res.render("ratings_dashboard", {"reviews": reviews, "averages": avgScores})
+  var pageTitle;
+  switch(course) {
+    case "finance":
+      pageTitle = "Financial Markets & Corporate Decision Making";
+      break;
+    case "marketing":
+      pageTitle = "Marketing Analysis & Customer Strategy";
+      break;
+    case "stats":
+      pageTitle = "Managerial Statistics";
+      break;
+    case "aps":
+      pageTitle = "Analytical Problem Solving";
+      break;
+    default:
+      pageTitle = "your selected course";
+  }
+
+  res.render("ratings_dashboard", {"reviews": reviews, "averages": avgScores, "title": pageTitle})
 
   req.flash("warning", "Ratings retrieved successfully!")
   //res.redirect("/ratings_form")
