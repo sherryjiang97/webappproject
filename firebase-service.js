@@ -25,8 +25,8 @@ async function fetchRatings(courseName) {
     const coursesRef = db.collection('courses');
     const snapshot = await coursesRef.where('course_name', '==', courseName).get();
     if (snapshot.empty) {
-    console.log('No matching documents.');
-    return;
+        console.log('No matching documents.');
+        throw "No reviews found for this course.";
     }  
 
     var reviews = []
