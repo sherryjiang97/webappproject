@@ -42,4 +42,34 @@ a {
 }
 
 
-/*homepage background*/
+.container2{
+  width: 100%;
+  height: 20vw;
+  align-items: center;
+  background-color:rgb(255, 255, 255);
+  
+  
+}
+.containerpic{
+  width: 100%;
+  height: 150px;
+  background-color:rgb(44, 43, 43);
+  
+}
+div#books{
+  float:left;
+  width: 70%;
+  height: 150px;
+ 
+  
+  
+}
+
+div#SubissionForm{
+  float:left;
+  width: 20%;
+  height: 150px;
+  margin-right: 10%;
+  
+  
+}

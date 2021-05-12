@@ -1,17 +1,25 @@
-<h2>Course Ratings</h2>
+<h2 style="color: rgb(79, 79, 97); text-align: center;">Course Ratings</h2>
 
-<p>Choose your class below:</p>
+<p style="text-align: center;">Choose your class below:</p>
+<div >
+    <img src="/images/g.PNG" style="width: 40%; margin-left: auto; margin-right: auto; display: block;" >
+</div>
 
-<form action="/ratings/dashboard" method="POST">
+<div style="width: 40%; margin-left: auto; margin-right: auto; display: block; padding-top: 1%;">
+    <form action="/ratings/dashboard" method="POST" style="text-align: center;">
 
-    <label>Class:</label>
-    <select name="course_name">
-        <option value="finance">Financial Markets & Corporate Decision Making</option>
-        <option value="marketing">Marketing Analysis & Customer Strategy</option>
-        <option value="stats">Managerial Statistics</option>
-        <option value="aps">Analytical Problem Solving</option>
-    </select>
-    <br>
+        <label>Class:</label>
+        <select name="course_name">
+            <option value="finance">Financial Markets & Corporate Decision Making</option>
+            <option value="marketing">Marketing Analysis & Customer Strategy</option>
+            <option value="stats">Managerial Statistics</option>
+            <option value="aps">Analytical Problem Solving</option>
+        </select>
+        <br>
+    
+        <button style="margin-top: 1%;">Submit</button>
+    </form>
 
-    <button>Submit</button>
-</form>
+</div>
+
+

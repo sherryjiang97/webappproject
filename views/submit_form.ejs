@@ -1,52 +1,60 @@
 
-<h2>Course Ratings</h2>
+<h2 style="color: rgb(79, 79, 97); text-align: center;">Course Ratings</h2>
 
-<p>Choose your class below:</p>
+<p style="text-align: center;">Choose your class below:</p>
 
-<form action="/submit/success" method="POST">
+<div >
+    <img src="/images/b1.PNG" style="width: 40%; margin-left: auto; margin-right: auto; display: block;" >
+</div>
 
-    <label>Class:</label>
-    <select name="course_name">
-        <option value="finance">Financial Markets & Corporate Decision Making</option>
-        <option value="marketing">Marketing Analysis & Customer Strategy</option>
-        <option value="stats">Managerial Statistics</option>
-        <option value="aps">Analytical Problem Solving</option>
-    </select>
-    <br>
+<div style="width: 40%; margin-left: auto; margin-right: auto; display: block; padding-top: 1%;">
+    <form action="/submit/success" method="POST" style="text-align: center;">
 
-    <label>Amount of Summative Assessments (higher is more):</label>
-    <select name="assessments">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <br>
+        <label>Class:</label>
+        <select name="course_name">
+            <option value="finance">Financial Markets & Corporate Decision Making</option>
+            <option value="marketing">Marketing Analysis & Customer Strategy</option>
+            <option value="stats">Managerial Statistics</option>
+            <option value="aps">Analytical Problem Solving</option>
+        </select>
+        <br>
+    
+        <label>Amount of Summative Assessments (higher is more):</label>
+        <select name="assessments">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br>
+    
+        <label>Amount of Group Work (higher is more):</label>
+        <select name="groupWork">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br>
+    
+        <label>Difficulty of Class (higher is more difficult):</label>
+        <select name="difficulty">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br>
+    
+        <label>Comments:</label>
+        <textarea name="comments"></textarea>
+    
+        <button>Submit</button>
+    </form>
 
-    <label>Amount of Group Work (higher is more):</label>
-    <select name="groupWork">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <br>
-
-    <label>Difficulty of Class (higher is more difficult):</label>
-    <select name="difficulty">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <br>
-
-    <label>Comments:</label>
-    <textarea name="comments"></textarea>
-
-    <button>Submit</button>
-</form>
-
+</div>
+                
+            
