@@ -35,8 +35,8 @@ a {
 
 
 .topnavbar a:hover {
-  
-  background-image: linear-gradient(to right, rgb(64, 64, 128), rgb(155, 120, 155), pink, yellow);
+  color: white;
+  background-image: linear-gradient(to right, rgb(68, 68, 83), rgb(74, 74, 95), white);
 }
 
 
