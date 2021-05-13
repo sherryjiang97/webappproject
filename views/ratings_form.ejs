@@ -5,19 +5,24 @@
     <img src="/images/g.PNG" style="width: 40%; margin-left: auto; margin-right: auto; display: block;" >
 </div>
 
-<div style="width: 40%; margin-left: auto; margin-right: auto; display: block; padding-top: 1%;">
-    <form action="/ratings/dashboard" method="POST" style="text-align: center;">
+<div class="container">
+    <form class="mx-auto" action="/ratings/dashboard" method="POST" style="max-width: 700px; margin-top: 2em;">
 
-        <label style="font-size: 1.5vw;">Class:</label>
-        <select name="course_name" style="font-size: 1.25vw;">
-            <option value="finance">Financial Markets & Corporate Decision Making</option>
-            <option value="marketing">Marketing Analysis & Customer Strategy</option>
-            <option value="stats">Managerial Statistics</option>
-            <option value="aps">Analytical Problem Solving</option>
-        </select>
-        <br>
-    
-        <button style="margin-top: 1%;font-size: 1.25vw;">Submit</button>
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Class:</label>
+            <div class="col-sm-8">
+                <select class="form-select" name="course_name">
+                    <option value="finance">Financial Markets & Corporate Decision Making</option>
+                    <option value="marketing">Marketing Analysis & Customer Strategy</option>
+                    <option value="stats">Managerial Statistics</option>
+                    <option value="aps">Analytical Problem Solving</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-primary mb-2" style="margin-top: 1em;">Submit</button>
+        </div>
     </form>
 
 </div>
